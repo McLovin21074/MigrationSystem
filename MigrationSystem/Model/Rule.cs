@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace MigrationSystem.Model
 {
-    internal class Rule
+    internal interface IRule
     {
+        public abstract bool Check(User user);
+        public abstract RoadMapPoint Apply(User user);
     }
 }

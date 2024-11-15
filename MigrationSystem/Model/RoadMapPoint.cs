@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace MigrationSystem.Model
 {
-    internal static class RulesRep
+    internal class RoadMapPoint
     {
-        public static List<IRule> GetRules()
-        {
-            return new List<IRule> { new CertificateRule() };
-        }
+        public string Description {  get; private set; }
     }
 }
