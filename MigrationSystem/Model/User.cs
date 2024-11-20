@@ -1,12 +1,11 @@
 ﻿namespace MigrationSystem.Model
 {
-    internal class User
+    public class User
     {
         public DateTime EntryDate { get; set; }
-        public string Citizenship { get; set; }
-        public bool IsMigrant { get; set; }
+        public bool WasMigrant { get; set; }
+        public string? Citizenship { get; set; }
         public bool IsHighQualified { get; set; }
-        public bool IsInProgram { get; set; }
-
+        public bool IsProgramParticipant { get; set; }
     }
 }
