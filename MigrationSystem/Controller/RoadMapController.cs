@@ -16,7 +16,7 @@ namespace MigrationSystem.Controller
             this.userService = userService;
         }
 
-        public RoadMap GetRoadMap()
+        public string GetRoadMap()
         {
             var rules = rulesRepository.GetRules();
             var user = userService.GetUser();
@@ -30,8 +30,7 @@ namespace MigrationSystem.Controller
                     roadMap.AddPoint(point);
                 }
             }
-
-            return roadMap;
+            return roadMap.GetMap();
         }
     }
 }

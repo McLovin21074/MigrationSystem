@@ -1,5 +1,4 @@
 ﻿using MigrationSystem.Controller;
-using MigrationSystem.Model;
 using MigrationSystem.Services;
 using MigrationSystem.Repositories;
 
@@ -10,7 +9,7 @@ namespace MigrationSystem.View
         public UserEntryForm()
         {
             InitializeComponent();
-            comboBox1.Items.AddRange(new string[] { "Белоруссия", "Киргизия", "Казахстан", "Армения", "Таджикистан", "Узбекистан", "Камерун" });
+            comboBox1.Items.AddRange(new string[] { "Белоруссия", "Украина", "Киргизия", "Казахстан", "Армения", "Таджикистан", "Узбекистан", "Камерун" });
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -40,9 +39,8 @@ namespace MigrationSystem.View
             userController.EnterDetails(entryDate, wasMigrant, citizenship, isHighQualified, isProgramParticipant);
 
             var roadMapController = new RoadMapController(rulesRepository, userService);
-            RoadMap roadMap = roadMapController.GetRoadMap();
 
-            textBox1.Text = roadMap.GetMap();
+            textBox1.Text = roadMapController.GetRoadMap();
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)

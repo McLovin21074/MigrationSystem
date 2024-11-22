@@ -15,13 +15,13 @@ namespace MigrationSystem.Controller
         public void EnterDetails(DateTime entryDate, bool wasMigrant, string citizenship, bool isHighQualified, bool isProgramParticipant)
         {
             var user = new User
-            {
-                EntryDate = entryDate,
-                WasMigrant = wasMigrant,
-                Citizenship = citizenship,
-                IsHighQualified = isHighQualified,
-                IsProgramParticipant = isProgramParticipant
-            };
+            (
+                entryDate,
+                wasMigrant,
+                citizenship,
+                isHighQualified,
+                isProgramParticipant
+            );
 
             userService.SetUser(user);
         }
