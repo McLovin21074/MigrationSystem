@@ -18,27 +18,31 @@
 
         private int CalculateDeadline(User user)
         {
-            if ((user.IsHighQualified && user.WasMigrant) || user.Citizenship == "Киргизия" ||
-                user.Citizenship == "Казахстан" || user.Citizenship == "Армения")
-            {
+            if (user.IsInProgram)
                 return 30;
-            }
-            else if (user.IsInProgram)
-            {
-                return 30;
-            }
-            else if (user.IsHighQualified || user.Citizenship == "Белоруссия" || user.Citizenship == "Украина")
+
+            if (user.IsHighQualified ||
+                user.Citizenship == "Белоруссия" ||
+                user.Citizenship == "Украина")
             {
                 return 90;
             }
-            else if (user.Citizenship == "Таджикистан" || user.Citizenship == "Узбекистан")
+
+            if ((user.IsHighQualified && user.WasMigrant) ||
+                user.Citizenship == "Киргизия" ||
+                user.Citizenship == "Казахстан" ||
+                user.Citizenship == "Армения")
+            {
+                return 30;
+            }
+
+            if (user.Citizenship == "Таджикистан" ||
+                user.Citizenship == "Узбекистан")
             {
                 return 15;
             }
-            else
-            {
-                return 7;
-            }
+
+            return 7;
         }
     }
 }

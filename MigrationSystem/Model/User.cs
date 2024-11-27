@@ -8,13 +8,13 @@
         public bool IsHighQualified { get; private set; }
         public bool IsInProgram { get; private set; }
 
-        public User(DateTime entryDate, bool wasMigrant, string? citizenship, bool isHighQualified, bool IsInProgram)
+        public User(DateTime entryDate, bool wasMigrant, string? citizenship, bool isHighQualified, bool isInProgram)
         {
             EntryDate = entryDate;
             WasMigrant = wasMigrant;
             Citizenship = citizenship;
             IsHighQualified = isHighQualified;
-            IsInProgram = IsInProgram;
+            IsInProgram = isInProgram;
         }
     }
 }

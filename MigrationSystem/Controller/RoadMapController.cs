@@ -20,16 +20,10 @@ namespace MigrationSystem.Controller
         {
             var rules = rulesRepository.GetRules();
             var user = userService.GetUser();
-            var roadMap = new RoadMap();
+            var roadMap = new RoadMap(rules);
+            roadMap.Generate(user);
 
-            foreach (var rule in rules)
-            {
-                if (rule.Check(user))
-                {
-                    var point = rule.CreateRoadMapPoint(user);
-                    roadMap.AddPoint(point);
-                }
-            }
+
             return roadMap.GetMap();
         }
     }

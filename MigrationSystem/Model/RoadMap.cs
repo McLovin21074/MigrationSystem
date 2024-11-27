@@ -5,9 +5,16 @@ namespace MigrationSystem.Model
 {
     public class RoadMap
     {
+        private List<IRule> rules;
+
+        public RoadMap(List<IRule> rules)
+        {
+            this.rules = rules;
+        }
+
         public List<RoadMapPoint> Points { get; private set; } = new List<RoadMapPoint>();
 
-        public void AddPoint(RoadMapPoint point)
+        private void AddPoint(RoadMapPoint point)
         {
             Points.Add(point);
         }
@@ -23,6 +30,18 @@ namespace MigrationSystem.Model
                 sb.AppendLine(new string('-', 40));
             }
             return sb.ToString();
+        }
+
+        internal void Generate(User user)
+        {
+            foreach (var rule in rules)
+            {
+                if (rule.Check(user))
+                {
+                    var point = rule.CreateRoadMapPoint(user);
+                    AddPoint(point);
+                }
+            }
         }
     }
 }

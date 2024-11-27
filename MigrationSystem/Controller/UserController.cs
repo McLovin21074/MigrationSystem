@@ -12,7 +12,7 @@ namespace MigrationSystem.Controller
             this.userService = userService;
         }
 
-        public void EnterDetails(DateTime entryDate, bool wasMigrant, string citizenship, bool isHighQualified, bool isProgramParticipant)
+        public void EnterDetails(DateTime entryDate, bool wasMigrant, string citizenship, bool isHighQualified, bool isInProgram)
         {
             var user = new User
             (
@@ -20,7 +20,7 @@ namespace MigrationSystem.Controller
                 wasMigrant,
                 citizenship,
                 isHighQualified,
-                isProgramParticipant
+                isInProgram
             );
 
             userService.SetUser(user);
