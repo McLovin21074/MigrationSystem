@@ -1,6 +1,6 @@
 ﻿namespace MigrationSystem.Model
 {
-    public class RegistrationRule: IRule
+    public class RegistrationRule : IRule
     {
         private DateTime deadlineDate;
         public bool Check(User user)
@@ -18,29 +18,24 @@
 
         private int CalculateDeadline(User user)
         {
-            if (user.IsInProgram)
+            if (user.IsInProgram || (user.IsHighQualified && user.WasMigrant))
                 return 30;
+
 
             if (user.IsHighQualified ||
                 user.Citizenship == "Белоруссия" ||
                 user.Citizenship == "Украина")
-            {
                 return 90;
-            }
 
-            if ((user.IsHighQualified && user.WasMigrant) ||
+            if (
                 user.Citizenship == "Киргизия" ||
                 user.Citizenship == "Казахстан" ||
                 user.Citizenship == "Армения")
-            {
                 return 30;
-            }
 
             if (user.Citizenship == "Таджикистан" ||
                 user.Citizenship == "Узбекистан")
-            {
                 return 15;
-            }
 
             return 7;
         }
