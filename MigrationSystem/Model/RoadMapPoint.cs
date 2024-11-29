@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace MigrationSystem.Model
 {
-    internal class RoadMapPoint
+    public class RoadMapPoint
     {
-        public string Description {  get; private set; }
     }
+    
 }

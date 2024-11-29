@@ -1,12 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace MigrationSystem.Controller
 {
-    internal class RoadMapController
+    public class RoadMapController
     {
+        private readonly RulesRepository rulesRepository;
+        private readonly UserService userService;
+
+        public RoadMapController(RulesRepository rulesRepository, UserService userService)
+        {
+            this.rulesRepository = rulesRepository;
+            this.userService = userService;
+        }
+
+        public string GetRoadMap()
+        {
+            var rules = rulesRepository.GetRules();
+            var user = userService.GetUser();
+            var roadMap = new RoadMap(rules);
+            roadMap.Generate(user);
+
+
+            return roadMap.GetMap();
+        }
     }
 }

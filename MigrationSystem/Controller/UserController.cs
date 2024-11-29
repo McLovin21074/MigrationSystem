@@ -1,22 +1,29 @@
 ﻿using MigrationSystem.Model;
+using MigrationSystem.Services;
 
 namespace MigrationSystem.Controller
 {
-    internal class UserController
+    public class UserController
     {
-        public void EntryDetails(DateTime entryDate, bool isMigrant, bool isInProgram,
-            string citizenship, bool isHighQualified)
+        private readonly UserService userService;
+
+        public UserController(UserService userService)
+        {
+            this.userService = userService;
+        }
+
+        public void EnterDetails(DateTime entryDate, bool wasMigrant, string citizenship, bool isHighQualified, bool isInProgram)
         {
             var user = new User
-            {
-                EntryDate = entryDate,
-                IsMigrant = isMigrant,
-                IsInProgram = isInProgram,
-                Citizenship = citizenship,
-                IsHighQualified = isHighQualified
-            };
+            (
+                entryDate,
+                wasMigrant,
+                citizenship,
+                isHighQualified,
+                isInProgram
+            );
 
-            UserServ.SetUser(user);
+            userService.SetUser(user);
         }
     }
 }
