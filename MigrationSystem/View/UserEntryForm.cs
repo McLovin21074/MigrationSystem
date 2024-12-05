@@ -9,7 +9,8 @@ namespace MigrationSystem.View
         public UserEntryForm()
         {
             InitializeComponent();
-            comboBox1.Items.AddRange(new string[] { "Белоруссия", "Украина", "Киргизия", "Казахстан", "Армения", "Таджикистан", "Узбекистан", "Камерун" });
+            string[] list = new string[] { "Белоруссия", "Украина", "Киргизия", "Казахстан", "Армения", "Таджикистан", "Узбекистан", "Камерун" } ;
+            comboBox1.Items.AddRange(list);
             tabControl1.SelectedIndexChanged += ShowRoadMap_Click;
         }
 
@@ -59,6 +60,7 @@ namespace MigrationSystem.View
                 if (citizenship == null)
                 {
                     MessageBox.Show("Пожалуйста, выберите гражданство.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tabControl1.SelectedIndex = 0;
                     return;
                 }
 
